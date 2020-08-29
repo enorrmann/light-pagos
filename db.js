@@ -10,8 +10,17 @@ let add = function (item) {
     db.get('payments')
         .push(item)
         .write();
-    console.log("item ok");
+
 };
+let get = function (hash) {
+    return db.get('payments')
+    .find({ id: hash })
+    .value();
+
+};
+
+
 module.exports = {
-    add: add
+    add: add,
+    get: get
 }
