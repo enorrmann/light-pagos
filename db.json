@@ -10,6 +10,72 @@
         "sandbox_init_point": "https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-0b012292-ae94-4e34-834b-493829ac1fce"
       },
       "id": "a0c036ff008dff835d55994084a8fa0377916b56a67440758cb00ace9a39a99e"
+    },
+    {
+      "pay_req": "lnbc1200n1p05jrqrpp50dlh8kt5q6jyrll3jvrmxkz5saqwqd26yl2rnxewep0ghjftv74qdq6w4hzqcmpvmp6jgrrdahzqumpdsxqrrss9qtzqqqqqq9qsqsp5hmw4dwvmusjhpu60shacfp2e0jx4sqcxp3l87g72lspdtnj83t4srzjqwryaup9lh50kkranzgcdnn2fgvx390wgj5jd07rwr3vxeje0glcll6j39rxt9v7cyqqqqlgqqqqqeqqjqsxkhr7z588hzwmpz5try9vvs3a6z0r45m65lqq24vf3lhzny7mfy5mxymnm9859d6llvru6u2vca8cakat229af9d6gzkw40xg4hr9qpcdcge3",
+      "payment_method": "MP",
+      "mp_response": {
+        "id": "90706324-c80f824c-c2aa-40f8-bffc-02d20ed53b1f",
+        "init_point": "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-c80f824c-c2aa-40f8-bffc-02d20ed53b1f",
+        "notification_url": "http://httpdump.io/xjrx5/?source_news&hash=a0c036ff008dff835d55994084a8fa0377916b56a67440758cb00ace9a39a99e",
+        "sandbox_init_point": "https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-c80f824c-c2aa-40f8-bffc-02d20ed53b1f"
+      },
+      "id": "a0c036ff008dff835d55994084a8fa0377916b56a67440758cb00ace9a39a99e"
+    },
+    {
+      "pay_req": "lnbc1200n1p05jrqrpp50dlh8kt5q6jyrll3jvrmxkz5saqwqd26yl2rnxewep0ghjftv74qdq6w4hzqcmpvmp6jgrrdahzqumpdsxqrrss9qtzqqqqqq9qsqsp5hmw4dwvmusjhpu60shacfp2e0jx4sqcxp3l87g72lspdtnj83t4srzjqwryaup9lh50kkranzgcdnn2fgvx390wgj5jd07rwr3vxeje0glcll6j39rxt9v7cyqqqqlgqqqqqeqqjqsxkhr7z588hzwmpz5try9vvs3a6z0r45m65lqq24vf3lhzny7mfy5mxymnm9859d6llvru6u2vca8cakat229af9d6gzkw40xg4hr9qpcdcge3",
+      "payment_method": "MP",
+      "mp_response": {
+        "id": "90706324-183f29f1-793b-4f1a-a978-746334a57ce2",
+        "init_point": "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-183f29f1-793b-4f1a-a978-746334a57ce2",
+        "notification_url": "http://httpdump.io/xjrx5/?source_news&hash=a0c036ff008dff835d55994084a8fa0377916b56a67440758cb00ace9a39a99e",
+        "sandbox_init_point": "https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-183f29f1-793b-4f1a-a978-746334a57ce2"
+      },
+      "id": "a0c036ff008dff835d55994084a8fa0377916b56a67440758cb00ace9a39a99e"
+    },
+    {
+      "pay_req": "lnbc1200n1p05jrqrpp50dlh8kt5q6jyrll3jvrmxkz5saqwqd26yl2rnxewep0ghjftv74qdq6w4hzqcmpvmp6jgrrdahzqumpdsxqrrss9qtzqqqqqq9qsqsp5hmw4dwvmusjhpu60shacfp2e0jx4sqcxp3l87g72lspdtnj83t4srzjqwryaup9lh50kkranzgcdnn2fgvx390wgj5jd07rwr3vxeje0glcll6j39rxt9v7cyqqqqlgqqqqqeqqjqsxkhr7z588hzwmpz5try9vvs3a6z0r45m65lqq24vf3lhzny7mfy5mxymnm9859d6llvru6u2vca8cakat229af9d6gzkw40xg4hr9qpcdcge3",
+      "payment_method": "MP",
+      "mp_response": {
+        "id": "90706324-c6aa40e6-ebb0-4e82-9317-bbad300e1a7c",
+        "init_point": "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-c6aa40e6-ebb0-4e82-9317-bbad300e1a7c",
+        "notification_url": "http://httpdump.io/xjrx5/?source_news&hash=a0c036ff008dff835d55994084a8fa0377916b56a67440758cb00ace9a39a99e",
+        "sandbox_init_point": "https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-c6aa40e6-ebb0-4e82-9317-bbad300e1a7c"
+      },
+      "id": "a0c036ff008dff835d55994084a8fa0377916b56a67440758cb00ace9a39a99e"
+    },
+    {
+      "pay_req": "lnbc1200n1p05jrqrpp50dlh8kt5q6jyrll3jvrmxkz5saqwqd26yl2rnxewep0ghjftv74qdq6w4hzqcmpvmp6jgrrdahzqumpdsxqrrss9qtzqqqqqq9qsqsp5hmw4dwvmusjhpu60shacfp2e0jx4sqcxp3l87g72lspdtnj83t4srzjqwryaup9lh50kkranzgcdnn2fgvx390wgj5jd07rwr3vxeje0glcll6j39rxt9v7cyqqqqlgqqqqqeqqjqsxkhr7z588hzwmpz5try9vvs3a6z0r45m65lqq24vf3lhzny7mfy5mxymnm9859d6llvru6u2vca8cakat229af9d6gzkw40xg4hr9qpcdcge3",
+      "payment_method": "MP",
+      "mp_response": {
+        "id": "90706324-8b825a88-f386-4959-9da2-b6e6d4cde2f5",
+        "init_point": "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-8b825a88-f386-4959-9da2-b6e6d4cde2f5",
+        "notification_url": "http://httpdump.io/xjrx5/?source_news&hash=a0c036ff008dff835d55994084a8fa0377916b56a67440758cb00ace9a39a99e",
+        "sandbox_init_point": "https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-8b825a88-f386-4959-9da2-b6e6d4cde2f5"
+      },
+      "id": "a0c036ff008dff835d55994084a8fa0377916b56a67440758cb00ace9a39a99e"
+    },
+    {
+      "pay_req": "lnbc230n1p05hggdpp5z6xm76xp32pl7jdcehngjvwf5an29zxxurdgject7ngal89ls6gsdpddpjkuerfv36hycfqvdhkugrsv9cxzueqv3jhyun0w3shxxqrrss9qtzqqqqqq9qsqsp5e2rnnd5xglwwesmz4d7kwgpq9jyxvw49kh5s69h9u7mxseq365vsrzjqwryaup9lh50kkranzgcdnn2fgvx390wgj5jd07rwr3vxeje0glcll6j39rxt9v7cyqqqqlgqqqqqeqqjq6yltj79gpkez00c8ps7wyspc5mwz3kg2hldmzy8ac052csfhx08swwn0zuk62f7cxjudu9mhzq43mtcmt5dwev2yvt06h5klt0gt85gpdvvf7e",
+      "payment_method": "MP",
+      "mp_response": {
+        "id": "90706324-f71535e9-a0ca-4819-b890-d5be2f5e7974",
+        "init_point": "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-f71535e9-a0ca-4819-b890-d5be2f5e7974",
+        "notification_url": "http://httpdump.io/xjrx5/?source_news&hash=6eb275b3585bcf5942cf58252f1710eb11888ddb8a8fcbdaef565771c0e98fa3",
+        "sandbox_init_point": "https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-f71535e9-a0ca-4819-b890-d5be2f5e7974"
+      },
+      "id": "6eb275b3585bcf5942cf58252f1710eb11888ddb8a8fcbdaef565771c0e98fa3"
+    },
+    {
+      "pay_req": "lnbc230n1p05hggdpp5z6xm76xp32pl7jdcehngjvwf5an29zxxurdgject7ngal89ls6gsdpddpjkuerfv36hycfqvdhkugrsv9cxzueqv3jhyun0w3shxxqrrss9qtzqqqqqq9qsqsp5e2rnnd5xglwwesmz4d7kwgpq9jyxvw49kh5s69h9u7mxseq365vsrzjqwryaup9lh50kkranzgcdnn2fgvx390wgj5jd07rwr3vxeje0glcll6j39rxt9v7cyqqqqlgqqqqqeqqjq6yltj79gpkez00c8ps7wyspc5mwz3kg2hldmzy8ac052csfhx08swwn0zuk62f7cxjudu9mhzq43mtcmt5dwev2yvt06h5klt0gt85gpdvvf7e",
+      "payment_method": "MP",
+      "mp_response": {
+        "id": "90706324-28de428b-02ad-4dc0-a58d-dfdf17eac7de",
+        "init_point": "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-28de428b-02ad-4dc0-a58d-dfdf17eac7de",
+        "notification_url": "http://httpdump.io/xjrx5/?source_news&hash=6eb275b3585bcf5942cf58252f1710eb11888ddb8a8fcbdaef565771c0e98fa3",
+        "sandbox_init_point": "https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=90706324-28de428b-02ad-4dc0-a58d-dfdf17eac7de"
+      },
+      "id": "6eb275b3585bcf5942cf58252f1710eb11888ddb8a8fcbdaef565771c0e98fa3"
     }
   ],
   "user": {},
