@@ -4,7 +4,7 @@
 
 const lightning = require('./lightning.js').lightning;
 var sha256 = require('js-sha256').sha256;
-const hook_server = 'http://rayo.host/';
+const hook_server = 'http://rayo.host:8081/mp_webhook/';
 
 
 

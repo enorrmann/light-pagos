@@ -35,6 +35,7 @@ let createPreference = function (paramPayReq) {
 }
 
 let payIfYouMust = function (payment_id, hash) {
+    console.log('recibida llamada ');
     return new Promise(function (resolve, reject) {
         mpago.getPaymentInfo(payment_id, hash).then(function (mp_response) {
             console.log(mp_response);
