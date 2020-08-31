@@ -20,9 +20,12 @@ app.post('/mp_webhook', (req, res) => {
   console.log(req.query);
   console.log("req.body");
   console.log(req.body);
-  logic.payIfYouMust(req.query.data_id,req.query.hash).then(function(response){
-    
-});
+
+  if (req.query.type && req.query.type=='payment'){
+    console.log("es n payment");
+    logic.payIfYouMust(req.query['data.id'],req.query.hash).then(function(response){});
+  }
+  
 res.send("ok");
 
 });
