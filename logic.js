@@ -1,6 +1,7 @@
 const adapter = require('./adapter.js');
 const mpago = require('./mpago.js');
 const db = require('./db.js');
+const lightning = require('./lightning.js').lightning;
 var sha256 = require('js-sha256').sha256;
 
 let clean = function (payReq) {
@@ -33,22 +34,36 @@ let createPreference = function (paramPayReq) {
     });
 }
 
-let getPaymentInfo = function () {
+let payIfYouMust = function (payment_id, hash) {
+    return new Promise(function (resolve, reject) {
+        mpago.getPaymentInfo(payment_id, hash).then(function (mp_response) {
+            console.log(mp_response);
+            // mp_response.notification_url contiene hash=sd78d8f6
+            if (mp_response.status == 'approved' && mp_response.status_detail == 'accredited') {
+                let payment_request = db.get(mp_response.hash).pay_req;
 
+                console.log('hay que pagar ' + mp_response.hash);
+                console.log('hay que pagar ' + payment_request);
+                let call = lightning.sendPayment({});
+                call.on('data', function(response) {
+                    // A response was received from the server.
+                    console.log(response);
+                    resolve(response);
+                  });
+ 
+                call.write({ payment_request: payment_request });
+            }
+            
+        }).catch(function (error) {
+            reject(error);
+        });
+    });
 };
 
-/*mpago.getPaymentInfo(29341344).then(function (mp_response) {
-    console.log(mp_response);
-    if (mp_response.status == 'approved' && mp_response.status_detail == 'accredited') {
-        console.log('hay que pagar ' + mp_response.hash);
-        console.log('hay que pagar ' + db.get(mp_response.hash).pay_req);
 
-    }
-
-});*/
 
 module.exports = {
     createPreference: createPreference,
-    getPaymentInfo: getPaymentInfo
+    payIfYouMust: payIfYouMust
 
 }

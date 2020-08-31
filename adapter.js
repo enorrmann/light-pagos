@@ -4,6 +4,7 @@
 
 const lightning = require('./lightning.js').lightning;
 var sha256 = require('js-sha256').sha256;
+const hook_server = 'http://rayo.host/';
 
 
 
@@ -23,7 +24,7 @@ let adapt = function (payReq,response) {
     // Crea un objeto de preferencia
     let hash = sha256(payReq);
     return {
-        notification_url: 'http://httpdump.io/xjrx5/?source_news&hash='+hash,
+        notification_url: hook_server+'?hash='+hash,
         items: [
             {
                 title: response.description,

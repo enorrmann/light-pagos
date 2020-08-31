@@ -9,7 +9,7 @@ const loaderOptions = {
     defaults: true,
     oneofs: true
 };
-const LND_DIR = '/home/emilio/.lnd/';
+const LND_DIR = '/home/bitcoin/.lnd/';
 const packageDefinition = protoLoader.loadSync('lnd.proto', loaderOptions);
 const lnrpc = grpc.loadPackageDefinition(packageDefinition).lnrpc;
 const macaroon = fs.readFileSync(LND_DIR + "data/chain/bitcoin/mainnet/admin.macaroon").toString('hex');

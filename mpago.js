@@ -2,8 +2,8 @@
 //TEST-8317557184416581-082813-8f516ba2d111ac8c5eace08afe0ee64a-90706324
 
 
-//https://api.mercadopago.com/v1/payments/29340175?access_token=TEST-8317557184416581-082813-8f516ba2d111ac8c5eace08afe0ee64a-90706324#json
-//https://api.mercadopago.com//merchant_orders/1724889014?access_token=TEST-8317557184416581-082813-8f516ba2d111ac8c5eace08afe0ee64a-90706324
+//https://api.mercadopago.com/v1/payments/29358696?access_token=TEST-8317557184416581-082813-8f516ba2d111ac8c5eace08afe0ee64a-90706324#json
+//https://api.mercadopago.com//merchant_orders/1728625282?access_token=TEST-8317557184416581-082813-8f516ba2d111ac8c5eace08afe0ee64a-90706324
 
 
 const ACCESS_TOKEN = 'TEST-8317557184416581-082813-8f516ba2d111ac8c5eace08afe0ee64a-90706324';
