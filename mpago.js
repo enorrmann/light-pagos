@@ -1,12 +1,14 @@
-//TEST-407d0c45-5c42-4f20-baf2-c4d1112f82b4
-//TEST-8317557184416581-082813-8f516ba2d111ac8c5eace08afe0ee64a-90706324
+
+//https://api.mercadopago.com/v1/payments/29358696?access_token=
+//https://api.mercadopago.com//merchant_orders/1728625282?access_token=
 
 
-//https://api.mercadopago.com/v1/payments/29358696?access_token=TEST-8317557184416581-082813-8f516ba2d111ac8c5eace08afe0ee64a-90706324#json
-//https://api.mercadopago.com//merchant_orders/1728625282?access_token=TEST-8317557184416581-082813-8f516ba2d111ac8c5eace08afe0ee64a-90706324
+if (!process.env.MP_ACCESS_TOKEN) {
+    console.log("WARNING !! NO HAY MP_ACCESS_TOKEN");
+}
 
+const ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN;
 
-const ACCESS_TOKEN = 'TEST-8317557184416581-082813-8f516ba2d111ac8c5eace08afe0ee64a-90706324';
 
 // SDK de Mercado Pago
 const mercadopago = require('mercadopago');
@@ -23,12 +25,14 @@ let createPreference = function (preference) {
         mercadopago.preferences.create(preference).then(function (response) {
             // Este valor reemplazará el string "<%= global.id %>" en tu HTML
             global.id = response.body.id;
+            console.log(response);
             resolve(
                 {
                     id: response.body.id,
                     init_point: response.body.init_point,
                     notification_url: response.body.notification_url,
-                    sandbox_init_point: response.body.sandbox_init_point
+                    sandbox_init_point: response.body.sandbox_init_point,
+                    init_point: response.body.init_point
                 }
 
             );

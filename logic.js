@@ -9,6 +9,25 @@ let clean = function (payReq) {
     return payReq.substring(idx);
 };
 
+let canPay = function (payReq) {
+    return new Promise(function (resolve, reject) {
+        lightning.decodePayReq({ pay_req: payReq }, function (err, decoded) {
+            if (err) {
+                reject(err);
+            } else {
+                let req = { pub_key: decoded.destination, amt: decoded.num_satoshis , route_hints:decoded.route_hints };
+                lightning.queryRoutes(req, function (err, response) {
+                    if (err) {
+                        reject({error:err,req:req,payReq:payReq,decoded:decoded});
+                    } else {
+                        resolve(response);
+                    }
+                });
+            };
+        });
+    });
+};
+
 let createPreference = function (paramPayReq) {
     let payReq = clean(paramPayReq);
     return new Promise(function (resolve, reject) {
@@ -34,6 +53,8 @@ let createPreference = function (paramPayReq) {
     });
 }
 
+
+
 let payIfYouMust = function (payment_id, hash) {
     console.log('recibida llamada ');
     return new Promise(function (resolve, reject) {
@@ -46,15 +67,15 @@ let payIfYouMust = function (payment_id, hash) {
                 console.log('hay que pagar ' + mp_response.hash);
                 console.log('hay que pagar ' + payment_request);
                 let call = lightning.sendPayment({});
-                call.on('data', function(response) {
+                call.on('data', function (response) {
                     // A response was received from the server.
                     console.log(response);
                     resolve(response);
-                  });
- 
+                });
+
                 call.write({ payment_request: payment_request });
             }
-            
+
         }).catch(function (error) {
             reject(error);
         });
@@ -65,6 +86,7 @@ let payIfYouMust = function (payment_id, hash) {
 
 module.exports = {
     createPreference: createPreference,
-    payIfYouMust: payIfYouMust
+    payIfYouMust: payIfYouMust,
+    canPay: canPay
 
 }

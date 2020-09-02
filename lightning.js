@@ -9,12 +9,21 @@ const loaderOptions = {
     defaults: true,
     oneofs: true
 };
-const LND_DIR = '/home/bitcoin/.lnd/';
+
+if (!process.env.LND_DIR) {
+    console.log("debe setear env LND_DIR");
+    return;
+  }
+
+const LND_DIR = process.env.LND_DIR;
+const MACAROON_FILE = LND_DIR + "data/chain/bitcoin/mainnet/admin.macaroon";
+const TLS_FILE = LND_DIR + 'tls.cert';
+
 const packageDefinition = protoLoader.loadSync('lnd.proto', loaderOptions);
 const lnrpc = grpc.loadPackageDefinition(packageDefinition).lnrpc;
-const macaroon = fs.readFileSync(LND_DIR + "data/chain/bitcoin/mainnet/admin.macaroon").toString('hex');
+const macaroon = fs.readFileSync(MACAROON_FILE).toString('hex');
 process.env.GRPC_SSL_CIPHER_SUITES = 'HIGH+ECDSA';
-const lndCert = fs.readFileSync(LND_DIR + 'tls.cert');
+const lndCert = fs.readFileSync(TLS_FILE);
 const sslCreds = grpc.credentials.createSsl(lndCert);
 const macaroonCreds = grpc.credentials.createFromMetadataGenerator(function (args, callback) {
     let metadata = new grpc.Metadata();
