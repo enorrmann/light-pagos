@@ -1,13 +1,13 @@
-
+const config = require('./config/config.js');
 //https://api.mercadopago.com/v1/payments/29358696?access_token=
 //https://api.mercadopago.com//merchant_orders/1728625282?access_token=
 
 
-if (!process.env.MP_ACCESS_TOKEN) {
+if (!config.MP_ACCESS_TOKEN) {
     console.log("WARNING !! NO HAY MP_ACCESS_TOKEN");
 }
 
-const ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN;
+const ACCESS_TOKEN = config.MP_ACCESS_TOKEN;
 
 
 // SDK de Mercado Pago

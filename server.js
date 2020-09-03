@@ -47,11 +47,8 @@ app.get('/can_pay/:payReq', (req, res) => {
 
 });
 
-if (!process.env.LND_DIR) {
-  console.log("debe setear env LND_DIR");
-} else {
-  app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-  });
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+});
 
-}
+

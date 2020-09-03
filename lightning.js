@@ -1,6 +1,7 @@
 const fs = require('fs');
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
+const config = require('./config/config.js');
 
 const loaderOptions = {
     keepCase: true,
@@ -10,12 +11,13 @@ const loaderOptions = {
     oneofs: true
 };
 
-if (!process.env.LND_DIR) {
+
+if (!config.LND_DIR) {
     console.log("debe setear env LND_DIR");
     return;
-  }
+}
 
-const LND_DIR = process.env.LND_DIR;
+const LND_DIR = config.LND_DIR;
 const MACAROON_FILE = LND_DIR + "data/chain/bitcoin/mainnet/admin.macaroon";
 const TLS_FILE = LND_DIR + 'tls.cert';
 
