@@ -19,8 +19,11 @@ const LND_DIR = process.env.LND_DIR;
 const MACAROON_FILE = LND_DIR + "data/chain/bitcoin/mainnet/admin.macaroon";
 const TLS_FILE = LND_DIR + 'tls.cert';
 
-const packageDefinition = protoLoader.loadSync('lnd.proto', loaderOptions);
+const packageDefinition = protoLoader.loadSync(['lnd.proto', 'router.proto'], loaderOptions);
+
 const lnrpc = grpc.loadPackageDefinition(packageDefinition).lnrpc;
+const routerrpc = grpc.loadPackageDefinition(packageDefinition).routerrpc;
+
 const macaroon = fs.readFileSync(MACAROON_FILE).toString('hex');
 process.env.GRPC_SSL_CIPHER_SUITES = 'HIGH+ECDSA';
 const lndCert = fs.readFileSync(TLS_FILE);
@@ -32,7 +35,10 @@ const macaroonCreds = grpc.credentials.createFromMetadataGenerator(function (arg
 });
 let creds = grpc.credentials.combineChannelCredentials(sslCreds, macaroonCreds);
 let lightning = new lnrpc.Lightning('localhost:10009', creds);
+let router = new routerrpc.Router('localhost:10009', creds);
+
 
 module.exports = {
-    lightning: lightning
+    lightning: lightning,
+    router: router
 }
