@@ -1,16 +1,16 @@
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
-const paymentsAdapter = new FileSync('payments.json')
-const failedPaymentAdapter = new FileSync('failed_payments.json')
-const logAdapter = new FileSync('log.json')
+const paymentsAdapter = new FileSync('db/payments.json')
+const failedPaymentAdapter = new FileSync('db/failed_payments.json')
+const logAdapter = new FileSync('db/log.json')
 
 const paymentsDb = low(paymentsAdapter);
 const failedPaymentsDb = low(failedPaymentAdapter);
 const logDb = low(logAdapter);
 
 paymentsDb.defaults({ payments: [] }).write();
-failedPaymentsDb.defaults({ failedPayments: [] }).write();
+failedPaymentsDb.defaults({ failedPayments: [],failedRoutings: [] }).write();
 logDb.defaults({ events: [] }).write();
 
 let add = function (item) {
@@ -32,6 +32,12 @@ let addFailedPayment = function (item) {
     .push(item)
     .write();
 };
+let addFailedRouting = function (item) {
+    item.time = new Date();
+    failedPaymentsDb.get('failedRoutings')
+    .push(item)
+    .write();
+};
 
 let logError = function (item) {
     item.time = new Date();
@@ -47,5 +53,6 @@ module.exports = {
     add: add,
     get: get,
     addFailedPayment : addFailedPayment,
+    addFailedRouting : addFailedRouting,
     logError:logError
 }
