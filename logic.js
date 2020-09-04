@@ -6,6 +6,8 @@ const lightning = lnd.lightning;
 const router = lnd.router;
 var sha256 = require('js-sha256').sha256;
 
+const maxRoutingFeePercent = 0.01;  //@todo poner parametro de config maxRouteFee %
+
 let clean = function (payReq) {
     let idx = payReq.indexOf("lnbc");
     return payReq.substring(idx);
@@ -15,21 +17,38 @@ let canPay = function (payReq) {
     return new Promise(function (resolve, reject) {
         lightning.decodePayReq({ pay_req: payReq }, function (err, decoded) {
             if (err) {
-                db.logError(err);
+                let cause = { error: err, payReq: payReq };
+                db.logError(cause);
+                db.addFailedRouting(cause);
                 reject(err);
             } else {
 
-                let queryRoutesReq = { pub_key: decoded.destination, amt: decoded.num_satoshis, route_hints: decoded.route_hints };
+                let maxRouteFee = Math.ceil(decoded.num_satoshis * maxRoutingFeePercent);
+
+                let queryRoutesReqLight = {
+                    pub_key: decoded.destination,
+                    amt: decoded.num_satoshis,
+                    route_hints: decoded.route_hints,
+                    fee_limit: { fixed: maxRouteFee } // percent | fixed // @todo calcular "a mano" para poder sumar los fees al pago
+                };
+                let queryRoutesReq = queryRoutesReqLight; // varibale para que sea facil cambiar entre queryRoutesReqLight y queryRoutesReqRouter
+
+                // este hace que se caiga el servicio LND: ver https://github.com/lightningnetwork/lnd/issues/4594
+                //let dest = Buffer.from(decoded.destination, 'hex');
+                //let queryRoutesReqRouter = { dest: dest, amt_sat: decoded.num_satoshis};
+                //router.estimateRouteFee(queryRoutesReq, function (err, response) {
                 lightning.queryRoutes(queryRoutesReq, function (err, response) {
+
+
                     if (err) {
-                        let cause = { error: err, req: queryRoutesReq, payReq: payReq };
-                        db.addFailedPayment(cause)
+                        let cause = { error: err, req: queryRoutesReq, payReq: payReq, decoded: decoded };
+                        db.addFailedRouting(cause);
                         reject(cause);
                     } else {
-                        console.log(decoded.payment_hash);
-                        console.log(decoded);
-                        resolve(response);
-                        // tengo que buscar payments, no invoices
+                        //console.log(decoded.payment_hash);
+                        //console.log(decoded);
+                        resolve({ canRoute: 'yes' });
+                        // tengo que buscar payments para ver si ya lo pague, no invoices
                         /*lightning.lookupInvoice({r_hash_str:decoded.payment_hash}, function (err, response) {
                             if (err) {
                                 //let cause = { error: err, req: queryRoutesReq, payReq: payReq };
@@ -100,11 +119,33 @@ let payIfYouMust = function (payment_id, hash) {
     });
 };
 
+// este metodo tiene que devolver directamente el preference de mpago si canPay lo permite
+// es decir, retorna un preference de mpago
+let initPayment = function (payment_request) {
+    return new Promise(function (resolve, reject) {
+        // verifica si puedo pagar
+        canPay(payment_request).then(function (response) {
+            // puego pagar
+            //resolve({canPay:response,payment_request:payment_request});
+            createPreference(payment_request).then(function (preference) {
+                resolve(preference);
+            }).catch(function (error) {
+                // error al crear el preference
+                reject(error);
+            });
 
+        }).catch(function (error) {
+            // NO puego pagar por "error"
+            reject(error);
+        });
+    });
+
+};
 
 module.exports = {
-    createPreference: createPreference,
+    initPayment: initPayment,
     payIfYouMust: payIfYouMust,
     canPay: canPay
+
 
 }

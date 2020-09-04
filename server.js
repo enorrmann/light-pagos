@@ -6,10 +6,15 @@ const logic = require('./logic.js');
 
 app.get('/mpago/:payReq', (req, res) => {
   let payReq = req.params.payReq;
-  logic.createPreference(payReq).then(function (response) {
+  logic.initPayment(payReq).then(function (response) {
+    // en este bloque la respuesta es correcta, redirijo a la pagina de seleccion de medio de pago
+    // por ahora directamente redirijo al checkout
     //res.send(response);
-    //res.redirect(response.mp_response.sandbox_init_point);
-    res.redirect(response.mp_response.init_point);
+    res.redirect(response.mp_response.sandbox_init_point);
+    //res.redirect(response.mp_response.init_point);
+  }).catch(function (error) {
+    // redirijo a la pagina de error
+    res.send(error); //error.details
   });
 });
 
@@ -36,7 +41,7 @@ app.get('/can_pay/:payReq', (req, res) => {
   logic.canPay(payReq).then(function (response) {
 
     //res.send(response);
-    res.send(response);
+    res.send("seleccione el medio de pago etc");
   }, function (err) {
     console.log('error aca antes');
     //console.log(err);
