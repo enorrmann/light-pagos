@@ -4,16 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@grpc/proto-loader": "^0.5.5",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
     "express": "^4.17.1",
     "grpc": "^1.24.3",
+    "hbs": "^4.1.1",
+    "http-errors": "~1.6.3",
     "js-sha256": "^0.9.0",
     "lowdb": "^1.0.0",
-    "mercadopago": "^1.3.2"
+    "mercadopago": "^1.3.2",
+    "morgan": "~1.9.1"
   }
 }

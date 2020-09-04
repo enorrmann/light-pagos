@@ -1,0 +1,2 @@
+color #fbca08 reemplazo por 
+#639ce7
