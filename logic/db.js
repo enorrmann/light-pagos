@@ -1,9 +1,9 @@
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
-const paymentsAdapter = new FileSync('db/payments.json')
-const failedPaymentAdapter = new FileSync('db/failed_payments.json')
-const logAdapter = new FileSync('db/log.json')
+const paymentsAdapter = new FileSync('./logic/db/payments.json')
+const failedPaymentAdapter = new FileSync('./logic/db/failed_payments.json')
+const logAdapter = new FileSync('./logic/db/log.json')
 
 const paymentsDb = low(paymentsAdapter);
 const failedPaymentsDb = low(failedPaymentAdapter);

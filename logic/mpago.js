@@ -1,4 +1,4 @@
-const config = require('./config/config.js');
+const config = require('./config.js');
 //https://api.mercadopago.com/v1/payments/29358696?access_token=
 //https://api.mercadopago.com//merchant_orders/1728625282?access_token=
 

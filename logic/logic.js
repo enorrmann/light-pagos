@@ -6,7 +6,7 @@ const lightning = lnd.lightning;
 const router = lnd.router;
 var sha256 = require('js-sha256').sha256;
 
-const maxRoutingFeePercent = 0.01;  //@todo poner parametro de config maxRouteFee %
+const maxRoutingFeePercent = 0.10;  //@todo poner parametro de config maxRouteFee  0.10 = 10%
 
 let clean = function (payReq) {
     let idx = payReq.indexOf("lnbc");
@@ -18,9 +18,9 @@ let canPay = function (payReq) {
         lightning.decodePayReq({ pay_req: payReq }, function (err, decoded) {
             if (err) {
                 let cause = { error: err, payReq: payReq };
-                db.logError(cause);
+                //db.logError(cause);
                 db.addFailedRouting(cause);
-                reject(err);
+                reject({error:err, mensaje: "El formato es incorrecto"});
             } else {
 
                 let maxRouteFee = Math.ceil(decoded.num_satoshis * maxRoutingFeePercent);
@@ -38,12 +38,10 @@ let canPay = function (payReq) {
                 //let queryRoutesReqRouter = { dest: dest, amt_sat: decoded.num_satoshis};
                 //router.estimateRouteFee(queryRoutesReq, function (err, response) {
                 lightning.queryRoutes(queryRoutesReq, function (err, response) {
-
-
                     if (err) {
-                        let cause = { error: err, req: queryRoutesReq, payReq: payReq, decoded: decoded };
+                        let cause = { error: err, req: queryRoutesReq };
                         db.addFailedRouting(cause);
-                        reject(cause);
+                        reject({error:err, mensaje: "De momento no tenemos capacidad, pero estamos trabajando para agregar mas !"});
                     } else {
                         //console.log(decoded.payment_hash);
                         //console.log(decoded);
