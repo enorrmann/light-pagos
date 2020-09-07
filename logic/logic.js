@@ -6,6 +6,7 @@ const lightning = lnd.lightning;
 const router = lnd.router;
 var sha256 = require('js-sha256').sha256;
 
+// fee source http://preev.com/pulse/units:btc+usd/sources:bitstamp
 const maxRoutingFeePercent = 0.10;  //@todo poner parametro de config maxRouteFee  0.10 = 10%
 
 let clean = function (payReq) {
