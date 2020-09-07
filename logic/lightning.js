@@ -22,10 +22,10 @@ const MACAROON_FILE = LND_DIR + "data/chain/bitcoin/mainnet/admin.macaroon";
 const TLS_FILE = LND_DIR + 'tls.cert';
 
 const packageDefinition = protoLoader.loadSync([
-    LND_DIR+'lnd.proto',
-    LND_DIR+'router.proto',
-    LND_DIR+'walletkit.proto',
-    LND_DIR+'signer.proto'
+    './lnd.proto',
+    'router.proto',
+    'walletkit.proto',
+    'signer.proto'
 ], loaderOptions);
 
 const lnrpc = grpc.loadPackageDefinition(packageDefinition).lnrpc;
